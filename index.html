@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlobalEdu AI | University Discovery & Admission</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" onclick="goHome();return false;"><span class="brand-icon">G</span><span>GlobalEdu
+        <b>AI</b></span></a>
+    <nav id="mainNav">
+      <button onclick="showPage('dashboard')">Dashboard</button>
+      <button onclick="showPage('universities')">Universities</button>
+      <button onclick="showPage('eligibility')">Eligibility</button>
+      <button onclick="showPage('recommendations')">Recommendations</button>
+      <button onclick="showPage('apply')">Apply</button>
+      <button onclick="showPage('status')">My Applications</button>
+    </nav>
+    <nav id="authNav" class="hidden">
+      <button onclick="showPage('login')">Login</button>
+      <button onclick="showPage('register')">Register</button>
+    </nav>
+    <div class="account" id="accountArea"><span id="userLabel">Guest</span><button class="outline small"
+        onclick="logout()">Logout</button></div>
+  </header>
+
+  <main>
+    <!-- LOGIN PAGE -->
+    <section id="loginPage" class="page">
+      <div class="auth-wrap">
+        <div class="auth-hero">
+          <span class="eyebrow">YOUR FUTURE STARTS HERE</span>
+          <h1>Find the university<br />that fits <em>your future.</em></h1>
+          <p>Explore courses, check basic eligibility, discover suitable universities and track your applications — all in
+            one place.</p>
+          <div class="hero-points"><span>✓ Explore universities</span><span>✓ Check eligibility</span><span>✓ Track
+              applications</span></div>
+        </div>
+        <div class="auth-card">
+          <h2>Welcome back</h2>
+          <p class="muted">Login to continue your journey.</p>
+          <form id="loginForm">
+            <label>Email address <input id="loginEmail" type="email" placeholder="you@example.com" required /></label>
+            <label>Password <input id="loginPassword" type="password" placeholder="At least 4 characters"
+                required /></label>
+            <button class="primary full" type="submit">Login</button>
+          </form>
+          <p class="form-note">Don't have an account? <a href="#"
+              onclick="showPage('register');return false;">Create one</a></p>
+          <p class="form-note">Demo project: your account is saved in this browser only.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTER PAGE -->
+    <section id="registerPage" class="page hidden">
+      <div class="auth-wrap">
+        <div class="auth-hero">
+          <span class="eyebrow">JOIN GLOBALEDU AI</span>
+          <h1>Create your account<br />and start <em>exploring.</em></h1>
+          <p>Register to discover universities, check eligibility and track your admission applications.</p>
+          <div class="hero-points"><span>✓ Explore universities</span><span>✓ Check eligibility</span><span>✓ Track
+              applications</span></div>
+        </div>
+        <div class="auth-card">
+          <h2>Create your account</h2>
+          <p class="muted">Register to start exploring universities.</p>
+          <form id="registerForm">
+            <label>Full name <input id="registerName" placeholder="Enter your name" required /></label>
+            <label>Email address <input id="registerEmail" type="email" placeholder="you@example.com" required /></label>
+            <label>Password <input id="registerPassword" type="password" placeholder="At least 4 characters"
+                required /></label>
+            <button class="primary full" type="submit">Register</button>
+          </form>
+          <p class="form-note">Already have an account? <a href="#"
+              onclick="showPage('login');return false;">Login</a></p>
+          <p class="form-note">Demo project: your account is saved in this browser only.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROTECTED APP -->
+    <section id="appPage" class="hidden">
+      <div class="welcome-banner">
+        <div><span class="eyebrow">GLOBAL UNIVERSITY DISCOVERY & ONLINE ADMISSION</span>
+          <h1 id="welcomeTitle">Welcome to GlobalEdu AI</h1>
+          <p>Plan your next step with confidence.</p>
+        </div>
+        <div class="banner-mark">GE<span>AI</span></div>
+      </div>
+
+      <section id="dashboardPage" class="page">
+        <div class="section-heading">
+          <div><span class="eyebrow">YOUR WORKSPACE</span>
+            <h2>Student Dashboard</h2>
+            <p class="muted">Everything you need for your university admission journey.</p>
+          </div>
+        </div>
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-icon">⌕</span><strong
+              id="universityCount">6</strong><small>Universities to explore</small></article>
+          <article class="stat-card"><span class="stat-icon">✓</span><strong
+              id="applicationCount">0</strong><small>Applications submitted</small></article>
+          <article class="stat-card"><span class="stat-icon">◎</span><strong
+              id="profileStatus">Pending</strong><small>Profile status</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel"><span class="eyebrow">GET STARTED</span>
+            <h3>Your admission journey</h3>
+            <div class="journey">
+              <div><b>01</b><span><strong>Explore universities</strong><small>Search courses, countries and
+                    fees.</small></span><button class="text-btn" onclick="showPage('universities')">Open →</button>
+              </div>
+              <div><b>02</b><span><strong>Check your eligibility</strong><small>Compare your marks with basic
+                    requirements.</small></span><button class="text-btn" onclick="showPage('eligibility')">Open
+                  →</button></div>
+              <div><b>03</b><span><strong>Get recommendations</strong><small>Find options based on your
+                    preferences.</small></span><button class="text-btn" onclick="showPage('recommendations')">Open
+                  →</button></div>
+              <div><b>04</b><span><strong>Apply and track</strong><small>Submit your details and view application
+                    status.</small></span><button class="text-btn" onclick="showPage('apply')">Open →</button></div>
+            </div>
+          </article>
+          <article class="panel accent-panel"><span class="eyebrow">A QUICK TIP</span>
+            <h3>Start with your preferences</h3>
+            <p>Choose your preferred country, course and budget before exploring recommendations.</p><button
+              class="primary" onclick="showPage('recommendations')">Find my universities</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="universitiesPage" class="page hidden">
+        <div class="section-heading">
+          <div><span class="eyebrow">DISCOVER YOUR OPTIONS</span>
+            <h2>Universities & Courses</h2>
+            <p class="muted">Search and filter the sample university directory.</p>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <input id="searchInput" placeholder="Search university or course..." oninput="renderUniversities()" />
+          <select id="countryFilter" onchange="renderUniversities()">
+            <option value="">All countries</option>
+            <option>Canada</option>
+            <option>United Kingdom</option>
+            <option>Australia</option>
+            <option>United States</option>
+            <option>Germany</option>
+            <option>India</option>
+          </select>
+          <select id="courseFilter" onchange="renderUniversities()">
+            <option value="">All courses</option>
+            <option>Computer Science</option>
+            <option>Information Technology</option>
+            <option>Business</option>
+            <option>Data Science</option>
+            <option>Engineering</option>
+          </select>
+        </div>
+        <div id="universityList" class="university-grid"></div>
+      </section>
+
+      <section id="eligibilityPage" class="page hidden">
+        <div class="section-heading">
+          <div><span class="eyebrow">KNOW WHERE YOU STAND</span>
+            <h2>Student Eligibility Checker</h2>
+            <p class="muted">Check basic eligibility using your qualification and percentage.</p>
+          </div>
+        </div>
+        <div class="form-panel narrow">
+          <form id="eligibilityForm" class="form-grid">
+            <label>Qualification<select id="qualification" required>
+                <option value="">Select qualification</option>
+                <option>12th Standard</option>
+                <option>Diploma</option>
+                <option>Bachelor's Degree</option>
+              </select></label>
+            <label>Academic percentage<input id="percentage" type="number" min="0" max="100" step="0.01"
+                placeholder="e.g. 75" required /></label>
+            <label class="span-two">Select course<select id="eligibilityCourse" required>
+                <option value="">Select course</option>
+                <option>Computer Science</option>
+                <option>Information Technology</option>
+                <option>Business</option>
+                <option>Data Science</option>
+                <option>Engineering</option>
+              </select></label>
+            <button class="primary span-two" type="submit">Check eligibility</button>
+          </form>
+          <div id="eligibilityResult" class="result-box hidden" aria-live="polite"></div>
+          <p class="form-note">This is a basic demo check, not an official university admission decision. Requirements
+            vary by institution.</p>
+        </div>
+      </section>
+
+      <section id="recommendationsPage" class="page hidden">
+        <div class="section-heading">
+          <div><span class="eyebrow">MATCH YOUR GOALS</span>
+            <h2>University Recommendations</h2>
+            <p class="muted">Simple rule-based matching based on your preferences.</p>
+          </div>
+        </div>
+        <div class="form-panel">
+          <form id="recommendationForm" class="form-grid">
+            <label>Preferred country<select id="preferredCountry" required>
+                <option value="">Choose country</option>
+                <option>Canada</option>
+                <option>United Kingdom</option>
+                <option>Australia</option>
+                <option>United States</option>
+                <option>Germany</option>
+                <option>India</option>
+              </select></label>
+            <label>Preferred course<select id="preferredCourse" required>
+                <option value="">Choose course</option>
+                <option>Computer Science</option>
+                <option>Information Technology</option>
+                <option>Business</option>
+                <option>Data Science</option>
+                <option>Engineering</option>
+              </select></label>
+            <label>Maximum yearly budget (USD)<input id="budget" type="number" min="0" placeholder="e.g. 25000"
+                required /></label>
+            <label>Academic percentage<input id="recommendationPercentage" type="number" min="0" max="100"
+                placeholder="e.g. 75" required /></label>
+            <button class="primary span-two" type="submit">Show recommendations</button>
+          </form>
+        </div>
+        <div id="recommendationList" class="university-grid top-gap"></div>
+      </section>
+
+      <section id="applyPage" class="page hidden">
+        <div class="section-heading">
+          <div><span class="eyebrow">TAKE THE NEXT STEP</span>
+            <h2>Online Admission Application</h2>
+            <p class="muted">Complete the form to create a demo application.</p>
+          </div>
+        </div>
+        <div class="form-panel narrow">
+          <form id="applicationForm" class="form-grid">
+            <label>Full name<input id="applicantName" required placeholder="Your full name" /></label>
+            <label>Email address<input id="applicantEmail" type="email" required
+                placeholder="you@example.com" /></label>
+            <label>University<select id="applicationUniversity" required>
+                <option value="">Select university</option>
+              </select></label>
+            <label>Course<select id="applicationCourse" required>
+                <option value="">Select course</option>
+                <option>Computer Science</option>
+                <option>Information Technology</option>
+                <option>Business</option>
+                <option>Data Science</option>
+                <option>Engineering</option>
+              </select></label>
+            <label class="span-two">Why are you interested? <textarea id="applicationReason" rows="3"
+                placeholder="Write a short statement (optional)"></textarea></label>
+            <button class="primary span-two" type="submit">Submit application</button>
+          </form>
+          <div id="applicationMessage" class="result-box hidden" aria-live="polite"></div>
+          <p class="form-note">Demo only: this form saves an application in your browser. It does not send it to a real
+            university.</p>
+        </div>
+      </section>
+
+      <section id="statusPage" class="page hidden">
+        <div class="section-heading">
+          <div><span class="eyebrow">APPLICATION OVERVIEW</span>
+            <h2>Application Status Tracking</h2>
+            <p class="muted">View the progress of applications submitted from this browser.</p>
+          </div>
+        </div>
+        <div id="applicationList" class="panel table-panel"></div>
+      </section>
+    </section>
+  </main>
+  <footer>© 2026 GlobalEdu AI <span>University discovery made simpler.</span></footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
